@@ -19,7 +19,6 @@ const TrafficLightSimulator = () => {
             });
         },
     3000); 
-
     return () => clearInterval(time); 
   }, []);
 
