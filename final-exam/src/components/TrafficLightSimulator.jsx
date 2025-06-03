@@ -2,6 +2,27 @@ import { useState,useEffect } from "react"
 
 const TrafficLightSimulator = () => {
     const [LightOn, setLightOn] = useState('red');
+
+    useEffect(() => {  
+        const time = setInterval(() => {
+            setLightOn((prevLight) => {
+                switch (prevLight) {
+                case 'red':
+                    return 'yellow';
+                case 'yellow':
+                    return 'green';
+                case 'green':
+                    return 'red';
+                default:
+                    return 'red';
+                }
+            });
+        },
+    3000); 
+
+    return () => clearInterval(time); 
+  }, []);
+
   return (
       <div className="container">
       <div className="internal-container">        
@@ -39,6 +60,7 @@ const TrafficLightSimulator = () => {
           background-color: #ff0000;
           box-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000, inset 0 0 15px rgba(255, 0, 0, 0.8);
         }
+
         .lights.YellowLight.active {
           background-color: #ffff00;
           box-shadow: 0 0 30px #ffff00, 0 0 60px #ffff00, inset 0 0 15px rgba(255, 255, 0, 0.8);
